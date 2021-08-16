@@ -37,5 +37,50 @@
                 </div>
             </div>
         </main>
+	    <script type="text/javascript" src="{{ url('js/jquery-3.5.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url('js/sweetalert.min.js') }}"></script>
+        
+        @if(Session::has('mensaje'))
+            <script type="text/javascript">
+                swal({
+                    title: "Mensaje!",
+                    text: "{!! Session::get('mensaje') !!}",
+                    icon: "warning",
+                    button: "OK",
+                    dangerMode: true,
+                    closeOnClickOutside: false
+                });
+            </script>
+        @endif
+
+        @if ($errors->any())
+            <script type="text/javascript">
+                var html ='';
+                @foreach ($errors->all() as $error)
+                    html +='{{ @$error }}\n';
+                @endforeach
+                swal({
+                    title: "Mensaje!",
+                    text: html,
+                    icon: "warning",
+                    button: "OK",
+                    dangerMode: true,
+                    closeOnClickOutside: false
+                });
+            </script>
+        @endif
+
+        <script type="text/javascript">
+            function valideKey(evt){
+                var code = (evt.which) ? evt.which : evt.keyCode;
+                if(code==8) {
+                    return true;
+                } else if(code>=48 && code<=57) {
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        </script>	
     </body>
 </html>

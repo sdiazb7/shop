@@ -11,7 +11,7 @@
                     <span class="product-price">
                     $<b>{{number_format( $product->price, 0 )}}</b>
                     </span>
-                    <img height="260" widht="260" src="{{url('img/'.$product->product_image)}}" alt="logo" >
+                    <img widht="260" height="260" src="{{url('img/'.$product->product_image)}}" alt="logo" >
                 </div>
                 <div class="card-body">
                     <h2>{{$product->product_name}}</h2>

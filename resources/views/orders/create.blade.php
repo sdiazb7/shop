@@ -5,30 +5,43 @@
 
 @section('content')
 
-<!--   Plantilla de prueba y en desarrollo     --->
 <div class="container-flex">
     <div class="container-flex-column">
-        <h3>{{$product['name']}}</h3>
-        <div class="card-body"></div>
-        <img height="260" widht="260" src="{{url('img/'.$product['product_image'])}}" alt="logo" >
-    </div>
-    <div class="container-flex-column">
-	    <h3>Plantilla de prueba y en desarrollo</h3>
-		<form>
+         <ul>
+	        <li><h5>Nombre del producto:</h5></li>
+	        <li><?=$product['product_name']?></li><br>
+	        <li><h5>Descripcion del producto:</h5></li>
+	        <li><?=$product['description']?></li><br>
+	     </ul>
+		 <div class="container-img">
+		    <img src="{{url('img/'.$product['product_image'])}}" ></img>
+	     </div> 
+	</div>
+    <div class="container-flex-column" style="background:#eceff7">
+		<form action="{{ route('clients.store') }}" method="POST" >
+		    @csrf
+			<input type="hidden" name="id_product" value="<?=$product['id']?>" >
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label for="nombre">Nombres:</label>
+                <input type="text" class="form-control" name="names" value="{{ old('name') }}"  placeholder="Registre sus nombres" >
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="surnombre">Apellidos:</label>
+                <input type="text" class="form-control" name="surnames" value="{{ old('surname') }}"  placeholder="Registre sus apellidos" >
             </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group">
+                <label for="surnombre">Correo Electrico:</label>
+                <input type="email" class="form-control" name="email" value="{{ old('email') }}"  placeholder="Registre su correo electronico" >
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <label for="surnombre">Telefono:</label>
+                <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"  placeholder="Registre su numero de telefono" >
+            </div>	
+            <div class="form-group">
+                <label for="surnombre">Precio del producto:</label>
+                <input type="text" class="form-control"  value="<?="$".number_format( $product->price, 0 )?>" readonly="readonly" placeholder="Registre su numero de telefono" >
+            </div>				
+            <button type="submit" class="btn btn-success" style="margin-top:25px">Completar compra</button>
         </form>
     </div>
 </div>

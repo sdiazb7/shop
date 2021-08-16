@@ -26,6 +26,6 @@ class OrdersController extends Controller
 
     	return view('orders.create', compact('product'));
     }
-  
+
 
 }

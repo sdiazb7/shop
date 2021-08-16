@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ClientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,5 @@ use App\Http\Controllers\OrdersController;
 
 Route::get('/', [ProductsController::class, 'index'])->name('welcome');
 Route::get('/orders/create/{id_product}', [OrdersController::class, 'create'])->name('orders.create');
+Route::post('clients', [ClientsController::class, 'store'])->name('clients.store');
+Route::get('/orders/response/{code}', [OrdersController::class, 'placetoPayResponse'])->name('orders.response');
