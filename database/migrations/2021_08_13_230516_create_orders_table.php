@@ -26,9 +26,10 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('id_client')->comment('Relación con la tabla clients.');
             $table->unsignedBigInteger('id_product')->comment('Relación con la tabla products.');
             $table->timestamps();
-            $table->foreign('id_client')->references('id')->on('clients')->onUpdate('cascade');
+            $table->decimal('product_price', 8, 2)->comment('Precio en el instante de compra.');
+			$table->foreign('id_client')->references('id')->on('clients')->onUpdate('cascade');
             $table->foreign('id_product')->references('id')->on('products')->onUpdate('cascade');
-			$table->decimal('product_cost', 8, 2)->comment('Costo en el instante de compra.');
+			
         });
     }
 

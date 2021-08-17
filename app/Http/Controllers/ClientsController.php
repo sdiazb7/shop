@@ -41,7 +41,15 @@ class ClientsController extends Controller
 	            ]);
 	            $client = Client::findOrFail( $id );
 			}
-            echo "Exito";
+           
+		    $params_payment = [
+				'id_product' => $data['id_product'],
+				'id_client' => $client->id,
+			];
+			unset($data, $client);
+			$orders = new Orders();
+        	return $orders->createOrder( $params_payment );
+			
         }catch(\Exception $e) {
         	$message = "".$e->getLine()." ".$e->getMessage();
         	return redirect()->back()->with('mensaje', $message);

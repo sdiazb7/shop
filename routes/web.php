@@ -19,4 +19,5 @@ use App\Http\Controllers\ClientsController;
 Route::get('/', [ProductsController::class, 'index'])->name('welcome');
 Route::get('/orders/create/{id_product}', [OrdersController::class, 'create'])->name('orders.create');
 Route::post('clients', [ClientsController::class, 'store'])->name('clients.store');
-Route::get('/orders/response/{code}', [OrdersController::class, 'placetoPayResponse'])->name('orders.response');
+Route::get('/orders/response/{code}', [OrdersController::class, 'responsePlacetoPay'])->name('orders.response');
+Route::get('/orders/retrypayment/{ref}', [OrdersController::class, 'retryPayment'])->name('orders.retrypayment');
