@@ -7,8 +7,8 @@ composer install<br>
 php artisan key:generate<br>
 4.Crear la base de datos con el nombre que prefieras y actualizar los datos en las variables de entorno en el archivo .env <br>
 5.Adicionar las siguientes variables de entorno en el archivo .env:.<br>
-   PLACETOPAY_LOGIN='**************************'<br>
-   PLACETOPAY_TRANKEY='**************************'<br>
+   PLACETOPAY_LOGIN=' '<br>
+   PLACETOPAY_TRANKEY=' '<br>
 6.Ejecutar las migraciones para crear las tablas por medio del siguiente comando:<br>
 php artisan migrate<br>
 7. Ejecutar los seeder de la tabla producto y users,por medio del siguiente comando:<br>
