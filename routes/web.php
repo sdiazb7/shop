@@ -21,3 +21,7 @@ Route::get('/orders/create/{id_product}', [OrdersController::class, 'create'])->
 Route::post('clients', [ClientsController::class, 'store'])->name('clients.store');
 Route::get('/orders/response/{code}', [OrdersController::class, 'responsePlacetoPay'])->name('orders.response');
 Route::get('/orders/retrypayment/{ref}', [OrdersController::class, 'retryPayment'])->name('orders.retrypayment');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
